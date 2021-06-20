@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
-{{IMPORTS}}
+import { defineConfig } from "vite";
+/*{{IMPORTS}}*/
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-{{PLUGINS}}
-  ]
+    /*{{PLUGINS}}*/
+  ],
 });

@@ -8,8 +8,8 @@ export async function createViteConfig(plugins: Plugin[]) {
     "../templates/vite.config.template"
   );
   const template = (await fs.readFile(templatePath)).toString();
-  const importReplacer = `{{IMPORTS}}`;
-  const pluginsReplacer = `{{PLUGINS}}`;
+  const importReplacer = `/*{{IMPORTS}}*/`;
+  const pluginsReplacer = `/*{{PLUGINS}}*/`;
 
   const importString = plugins
     .map(({ importStatement }) => importStatement)
