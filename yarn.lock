@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/hjson@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@types/hjson/-/hjson-2.4.2.tgz#fd0288a5b6778cda993c978e43cc978ddc8f22e9"
+  integrity sha512-MSKTfEyR8DbzJTOAY47BIJBD72ol4cu6BOw5inda0q1eEtEmurVHL4OmYB3Lxa4/DwXbWidkddvtoygbGQEDIw==
+
 "@types/inquirer@^7.3.2":
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-7.3.2.tgz#35d2ef4d98dd42feeb4e1256cdeb9f13f457d420"
@@ -140,11 +145,6 @@ defaults@^1.0.3:
   dependencies:
     clone "^1.0.2"
 
-dotenv@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-10.0.0.tgz#3d4227b8fb95f81096cdd2b66653fb2c7085ba81"
-  integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
-
 emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
@@ -214,6 +214,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+hjson@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/hjson/-/hjson-3.2.2.tgz#a5a81138f4c0bb427e4b2ac917fafd4b454436cf"
+  integrity sha512-MkUeB0cTIlppeSsndgESkfFD21T2nXPRaBStLtf3cAYA2bVEFdXlodZB0TukwZiobPD1Ksax5DK4RTZeaXCI3Q==
 
 iconv-lite@^0.4.24:
   version "0.4.24"

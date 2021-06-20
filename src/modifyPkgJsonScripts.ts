@@ -1,6 +1,11 @@
 import path from "path";
 import { promises as fs } from "fs";
-import { exitWithErrorMessage, isTypescriptProject } from "./util";
+import {
+  exitWithErrorMessage,
+  isTypescriptProject,
+  parseJson,
+  stringifyJson,
+} from "./util";
 
 async function replaceBuildScripts(pkgJson: string) {
   const isTypescript = await isTypescriptProject();
@@ -20,9 +25,9 @@ async function replaceDevScripts(pkgJson: string) {
 }
 
 async function removeEject(pkgJson: string) {
-  const pkgJsonObj = JSON.parse(pkgJson);
+  const pkgJsonObj = parseJson(pkgJson);
   delete pkgJsonObj?.scripts?.eject;
-  return JSON.stringify(pkgJsonObj, null, 2);
+  return stringifyJson(pkgJsonObj);
 }
 
 export async function modifyPkgJsonScripts() {

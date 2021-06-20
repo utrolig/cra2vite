@@ -5,6 +5,7 @@ import { modifyPkgJsonScripts } from "./modifyPkgJsonScripts";
 import { selectPlugins } from "./selectPlugins";
 import { convertIndexHtml } from "./convertIndexHtml";
 import { updateTypescriptDefs } from "./updateTypescriptDefs";
+import { updateTsConfigTarget } from "./updateTsConfigTarget";
 
 async function main() {
   const pluginsToAdd = await selectPlugins();
@@ -12,6 +13,7 @@ async function main() {
   await updateDeps(pluginsToAdd);
   await modifyPkgJsonScripts();
   await convertIndexHtml();
+  await updateTsConfigTarget();
   await updateTypescriptDefs();
 }
 

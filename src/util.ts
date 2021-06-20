@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import inquirer from "inquirer";
 import path from "path";
 import { appendToErrorFile, errFilename } from "./errorLog";
+import HJSON from "hjson";
 
 export async function exists(path: string) {
   try {
@@ -64,4 +65,18 @@ export async function isTypescriptProject() {
   const tsconfigPath = path.resolve(process.cwd(), "tsconfig.json");
   const tsconfigExists = await exists(tsconfigPath);
   return tsconfigExists;
+}
+
+export function stringifyJson<T>(obj: T) {
+  return HJSON.stringify(obj, {
+    space: 2,
+    quotes: "all",
+    separator: true,
+    bracesSameLine: true,
+    keepWsc: true,
+  });
+}
+
+export function parseJson(str: string) {
+  return HJSON.parse(str, { keepWsc: true });
 }

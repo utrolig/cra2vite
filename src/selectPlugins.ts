@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import { plugins, tsConfigPathsPlugin } from "./plugins";
 import path from "path";
 import { promises as fs } from "fs";
-import { exists } from "./util";
+import { exists, parseJson } from "./util";
 
 async function requiresTsConfigPathsPlugin() {
   const tsConfigPath = path.resolve(process.cwd(), "tsconfig.json");
@@ -13,7 +13,7 @@ async function requiresTsConfigPathsPlugin() {
 
   const tsConfig = await fs
     .readFile(tsConfigPath)
-    .then((f) => JSON.parse(f.toString()));
+    .then((f) => parseJson(f.toString()));
 
   if (tsConfig.compilerOptions.baseUrl) {
     return true;
