@@ -50,7 +50,7 @@ async function removeDeps(pkgManager: PkgManager) {
 }
 
 async function installDeps(plugins: Plugin[], pkgManager: PkgManager) {
-  const baseDeps = ["vite"];
+  const baseDeps = ["vite", "dotenv"];
   const depsToInstall = plugins.map(({ npmPkg }) => npmPkg);
 
   const deps = [...baseDeps, ...depsToInstall];
