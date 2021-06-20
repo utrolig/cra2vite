@@ -7,6 +7,7 @@ import {
   stringifyJson,
 } from "./util";
 import ora from "ora";
+import { omit } from "lodash";
 
 async function replaceBuildScripts(pkgJson: string) {
   const isTypescript = await isTypescriptProject();
@@ -26,8 +27,7 @@ async function replaceDevScripts(pkgJson: string) {
 }
 
 async function removeEject(pkgJson: string) {
-  const pkgJsonObj = parseJson(pkgJson);
-  delete pkgJsonObj?.scripts?.eject;
+  const pkgJsonObj = omit(parseJson(pkgJson), ["scripts.eject"]);
   return stringifyJson(pkgJsonObj);
 }
 
