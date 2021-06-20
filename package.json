@@ -11,7 +11,7 @@
     "start": "tsc --watch --incremental"
   },
   "files": [
-    "bin/**/*",
+    "dist/**/*",
     "templates/**/*"
   ],
   "devDependencies": {

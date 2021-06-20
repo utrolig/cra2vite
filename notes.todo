@@ -1,4 +1,4 @@
 Main features:
-  ☐ Convert index.html and make sure files are copied from public
+  ✔ Convert index.html and make sure files are copied from public @done(21-06-20 18:34)
   ☐ Make sure testing works (probably have to install test dependencies added when ejecting)
   ☐ Add storybook support
