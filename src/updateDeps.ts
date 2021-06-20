@@ -4,6 +4,7 @@ import { promisify } from "util";
 import { exec as execCb } from "child_process";
 import ora from "ora";
 import { appendToErrorFile } from "./errorLog";
+import chalk from "chalk";
 
 const exec = promisify(execCb);
 
@@ -32,19 +33,16 @@ async function removeDeps(pkgManager: PkgManager) {
   );
 
   const spinner = ora(
-    `Removing ${_pluralizedDeps(depsToRemove.length)} ${depsToRemove.join(
-      ", "
-    )}`
+    `Removing ${depsToRemove.length} ${_pluralizedDeps(depsToRemove.length)}`
   );
   spinner.start();
 
   try {
     await exec(removeString);
     spinner.succeed(
-      `Removed ${depsToRemove.length} ${_pluralizedDeps(
-        depsToRemove.length
-      )}. (${depsToRemove.join(" ")})`
+      `Removed ${depsToRemove.length} ${_pluralizedDeps(depsToRemove.length)}.`
     );
+    console.log(`  ${chalk.blueBright(depsToRemove.join("\n  "))}`);
   } catch (err) {
     spinner.fail("Error while removing dependencies.");
     await exitWithErrorMessage(err);
@@ -60,17 +58,16 @@ async function installDeps(plugins: Plugin[], pkgManager: PkgManager) {
   const installString = [addDepsPrefix[pkgManager], ...deps].join(" ");
 
   const spinner = ora(
-    `Installing ${_pluralizedDeps(deps.length)} ${deps.join(", ")}`
+    `Installing ${deps.length} ${_pluralizedDeps(deps.length)}`
   );
   spinner.start();
 
   try {
     await exec(installString);
     spinner.succeed(
-      `Installed ${deps.length} ${_pluralizedDeps(deps.length)}. (${deps.join(
-        " "
-      )})`
+      `Installed ${deps.length} ${_pluralizedDeps(deps.length)}.`
     );
+    console.log(`  ${chalk.blueBright(deps.join("\n  "))}`);
   } catch (err) {
     spinner.fail("Error while installing dependencies.");
     await exitWithErrorMessage(err);

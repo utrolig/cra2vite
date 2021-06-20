@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import ora from "ora";
 import path from "path";
 
 function filterByTypescriptDefinitionFiles(files: string[]) {
@@ -24,9 +25,13 @@ async function replaceReactScriptsReferenceIfExists(files: string[]) {
 }
 
 export async function updateTypescriptDefs() {
+  const spinner = ora("Updating typescript definition files");
+  spinner.start();
   const srcFolder = path.resolve(process.cwd(), "src");
   await fs
     .readdir(srcFolder)
     .then(filterByTypescriptDefinitionFiles)
     .then(replaceReactScriptsReferenceIfExists);
+
+  spinner.succeed("Updated typescript definition files");
 }

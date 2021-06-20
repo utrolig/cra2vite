@@ -13,12 +13,6 @@ export const tsConfigPathsPlugin: Plugin = {
 };
 
 export const plugins: Record<string, Plugin> = {
-  "process-env-variables": {
-    name: "process.env REACT_APP vars",
-    importStatement: `import envCompatible from "vite-plugin-env-compatible";`,
-    npmPkg: "vite-plugin-env-compatible",
-    pluginFn: "envCompatible()",
-  },
   "react-refresh": {
     name: "React Refresh",
     importStatement: `import reactRefresh from "@vitejs/plugin-react-refresh";`,

@@ -6,6 +6,7 @@ import {
   parseJson,
   stringifyJson,
 } from "./util";
+import ora from "ora";
 
 async function replaceBuildScripts(pkgJson: string) {
   const isTypescript = await isTypescriptProject();
@@ -31,6 +32,8 @@ async function removeEject(pkgJson: string) {
 }
 
 export async function modifyPkgJsonScripts() {
+  const spinner = ora("Updating package.json scripts");
+  spinner.start();
   const pkgJsonPath = path.resolve(process.cwd(), "package.json");
   try {
     const pkgJson = await fs
@@ -41,7 +44,9 @@ export async function modifyPkgJsonScripts() {
       .then(removeEject);
 
     await fs.writeFile(pkgJsonPath, pkgJson);
+    spinner.succeed("Updated package.json scripts");
   } catch (err) {
     await exitWithErrorMessage(err);
+    spinner.fail("Error while updating package.json scripts");
   }
 }

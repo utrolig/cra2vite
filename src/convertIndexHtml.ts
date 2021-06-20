@@ -1,5 +1,6 @@
 import path from "path";
 import { promises as fs } from "fs";
+import ora from "ora";
 
 async function removePublicUrl(indexHtml: string) {
   return indexHtml.replace(/%PUBLIC_URL%/g, "");
@@ -48,6 +49,8 @@ async function resolveEntrypointFilename() {
 }
 
 export async function convertIndexHtml() {
+  const spinner = ora("Updating and moving index.html");
+  spinner.start();
   const indexHtmlPath = path.resolve(process.cwd(), "public/index.html");
   const newIndexHtmlPath = path.resolve(process.cwd(), "index.html");
   const entrypointFilename = await resolveEntrypointFilename();
@@ -59,4 +62,5 @@ export async function convertIndexHtml() {
 
   await fs.writeFile(newIndexHtmlPath, indexHtml);
   await fs.unlink(indexHtmlPath);
+  spinner.succeed("Updated and moved index.html");
 }
