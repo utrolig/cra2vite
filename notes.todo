@@ -1,5 +1,5 @@
 Main features:
   ✔ Convert index.html and make sure files are copied from public @done(21-06-20 18:34)
-  ☐ Environment variables (process.env support)
+  ✔ Environment variables (process.env support) @done(21-06-20 20:32)
   ☐ Make sure testing works (probably have to install test dependencies added when ejecting)
   ☐ Add storybook support
