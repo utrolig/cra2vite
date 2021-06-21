@@ -3,3 +3,6 @@ Main features:
   ✔ Environment variables (process.env support) @done(21-06-20 20:32)
   ☐ Make sure testing works (probably have to install test dependencies added when ejecting)
   ☐ Add storybook support
+  ✔ Add SVGR type definitions to d.ts @done(21-06-21 10:17)
+    ☐ Rethink how type definitions are added
+  ☐ Add support for `react-jsx` (https://github.com/alloc/vite-react-jsx)

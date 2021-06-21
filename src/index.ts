@@ -14,7 +14,7 @@ async function main() {
   await modifyPkgJsonScripts();
   await convertIndexHtml();
   await updateTsConfigTarget();
-  await updateTypescriptDefs();
+  await updateTypescriptDefs(pluginsToAdd);
 }
 
 main();
