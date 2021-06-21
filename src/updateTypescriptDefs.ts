@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import ora from "ora";
 import path from "path";
-import { Plugin, plugins } from "./plugins";
+import { Plugin } from "./plugins";
 
 function filterByTypescriptDefinitionFiles(files: string[]) {
   return files.filter((file) => file.endsWith("d.ts"));
