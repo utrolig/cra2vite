@@ -1,8 +1,26 @@
 import inquirer from "inquirer";
-import { plugins, tsConfigPathsPlugin } from "./plugins";
+import { plugins, reactJsxPlugin, tsConfigPathsPlugin } from "./plugins";
 import path from "path";
 import { promises as fs } from "fs";
 import { exists, parseJson } from "./util";
+
+async function requiresReactJSXPlugin() {
+  const tsConfigPath = path.resolve(process.cwd(), "tsconfig.json");
+
+  const hasTsConfig = await exists(tsConfigPath);
+
+  if (!hasTsConfig) return false;
+
+  const tsConfig = await fs
+    .readFile(tsConfigPath)
+    .then((f) => parseJson(f.toString()));
+
+  if (tsConfig.compilerOptions.jsx === "react-jsx") {
+    return true;
+  }
+
+  return false;
+}
 
 async function requiresTsConfigPathsPlugin() {
   const tsConfigPath = path.resolve(process.cwd(), "tsconfig.json");
@@ -42,6 +60,10 @@ export async function selectPlugins() {
 
   if (await requiresTsConfigPathsPlugin()) {
     pluginsToAdd.push(tsConfigPathsPlugin);
+  }
+
+  if (await requiresReactJSXPlugin()) {
+    pluginsToAdd.push(reactJsxPlugin);
   }
 
   return pluginsToAdd;

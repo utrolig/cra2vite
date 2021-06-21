@@ -18,7 +18,7 @@ export async function createViteConfig(plugins: Plugin[]) {
     .map(({ importStatement }) => importStatement)
     .join("\n");
 
-  const pluginIndentation = "    ";
+  const pluginIndentation = "      ";
   const pluginsString = plugins
     .map(({ pluginFn }) => `${pluginIndentation}${pluginFn}`)
     .join(",\n");

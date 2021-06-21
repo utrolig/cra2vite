@@ -12,6 +12,13 @@ export const tsConfigPathsPlugin: Plugin = {
   npmPkg: "vite-tsconfig-paths",
 };
 
+export const reactJsxPlugin: Plugin = {
+  name: "React JSX Vite Plugin",
+  importStatement: `import reactJsx from "vite-react-jsx";`,
+  npmPkg: "vite-react-jsx",
+  pluginFn: `reactJsx()`,
+};
+
 export const plugins: Record<string, Plugin> = {
   "react-refresh": {
     name: "React Refresh",

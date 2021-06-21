@@ -43,7 +43,7 @@ const getEnv = (mode: string) => {
 export default ({ mode }) =>
   defineConfig({
     plugins: [
-      /*{{PLUGINS}}*/
+/*{{PLUGINS}}*/
     ],
     define: {
       ...getEnv(mode),
