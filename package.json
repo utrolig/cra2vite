@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "main": "./dist/index.js",
   "license": "MIT",
+  "homepage": "https://github.com/utrolig/cra2vite",
   "bin": {
     "cra2vite": "./dist/index.js"
   },
